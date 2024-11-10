@@ -15,5 +15,10 @@ public partial struct Color
         B = b;
     }
 
+    public override string ToString()
+    {
+        return "#" + R.ToString("X2") + G.ToString("X2") + B.ToString("X2");
+    }
+
     public static readonly Color White = new(0xFF, 0xFF, 0xFF);
 }
