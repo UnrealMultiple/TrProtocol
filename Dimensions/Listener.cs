@@ -22,7 +22,7 @@ namespace Dimensions
 
         private void OnAcceptClient(TcpClient client)
         {
-            var @default = Program.config.servers.First();
+            var @default = Program.Config.servers.First();
             try
             {
                 new Client(client).TunnelTo(@default);
@@ -39,12 +39,12 @@ namespace Dimensions
                 try
                 {
                     var client = listener.AcceptTcpClient();
-                    Console.WriteLine($"Accepted connection from {client.Client.RemoteEndPoint}");
+                    Logger.Log("TcpListener", LogLevel.INFO , $"接受来自客户端的连接: {client.Client.RemoteEndPoint}");
                     Task.Run(() => OnAcceptClient(client));
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"Error accepting connection: {e}");
+                    Logger.Log("TcpListener", LogLevel.ERROR , $"接受客户端连接时发生错误: {e}");
                 }
             }
         }

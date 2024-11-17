@@ -10,8 +10,8 @@ namespace Dimensions
 {
     internal static class Serializers
     {
-        public static readonly PacketSerializer clientSerializer = new(true, Program.config.protocolVersion);
-        public static readonly PacketSerializer serverSerializer = new(false, Program.config.protocolVersion);
+        public static readonly PacketSerializer clientSerializer = new(true, Program.Config.protocolVersion);
+        public static readonly PacketSerializer serverSerializer = new(false, Program.Config.protocolVersion);
 
         static Serializers()
         {

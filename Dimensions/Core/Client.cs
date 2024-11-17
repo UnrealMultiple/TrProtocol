@@ -14,8 +14,8 @@ namespace Dimensions.Core;
 public class Client
 {
     private readonly PacketClient _client;
-    
-    private readonly ClientHello clientHello;
+    private ClientHello clientHello;
+    public SyncPlayer syncPlayer;
     private readonly DimensionUpdate clientAddress;
     private Tunnel c2s, s2c;
     private PacketClient _serverConnection;
@@ -27,7 +27,7 @@ public class Client
 
     public void SendClient(Packet packet)
     {
-        Console.WriteLine($"Send To Client: {packet}");
+        Logger.Log("Client", LogLevel.INFO , $"向客户端发送数据包: {packet}");
         _client.Send(packet);
     }
 
@@ -50,7 +50,7 @@ public class Client
     public Exception Disconnect(string reason)
     {
         SendClient(new Kick { Reason = NetworkText.FromLiteral(reason)});
-        //Console.WriteLine($"Disconnected from {_client.client.Client?.RemoteEndPoint}: {reason}");
+        Logger.Log("Client", LogLevel.WARNING , $"已断开客户端{_client.client.Client?.RemoteEndPoint}的连接: {reason}");
         _client.client.Close();
         return new(reason);
     }
@@ -86,7 +86,7 @@ public class Client
 
     private void OnError(Exception e)
     {
-        Console.WriteLine($"critical connection error occurred: {e}");
+        Logger.Log("Client", LogLevel.ERROR , $"连接错误: {e}");
         s2c?.Close();
         c2s?.Close();
         _serverConnection?.client.Close();
@@ -108,7 +108,6 @@ public class Client
         // prepare the to-server channel to load player state
         _serverConnection.Send(clientHello);
         _serverConnection.Send(clientAddress);
-        
         s2c = new Tunnel(_serverConnection, _client, "[S2C]");
         s2c.OnReceive += OnS2CPacket;
         s2c.OnError += OnError;
@@ -164,36 +163,36 @@ public class Client
     {
         if (target == null)
         {
-            SendChatMessage("Server not found");
+            SendChatMessage("没有找到目标服务器");
             return;
         }
         
         if (target == currentServer)
         {
-            SendChatMessage("Already connected to this server");
+            SendChatMessage("你已连接此服务器");
             return;
         }
         
-        c2s!.OnClose += () =>
+        try
         {
-            try
-            {
-                Cleaning();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-            TunnelTo(target);
-        };
-
-        s2c!.Close();
+            Cleaning();
+        }
+        catch (Exception e)
+        {
+            Logger.Log("C2S", LogLevel.ERROR , $"在清理时发生错误: {e}");
+        }
+        
+        s2c.OnReceive -= OnS2CPacket;
+        c2s.OnReceive -= OnC2SPacket;
+        _serverConnection.OnError -= OnError;
+        
+        s2c.Close();
         c2s.Close();
-
+        
         _client.Cancel();
         _serverConnection!.Cancel();
-
         _serverConnection.client.Close();
+        TunnelTo(target);
 
     }
 

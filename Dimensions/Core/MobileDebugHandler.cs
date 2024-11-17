@@ -13,7 +13,7 @@ namespace Dimensions.Core
         {
             if (args.Packet is PlayerPlatformInfo packet)
             {
-                Parent.SendChatMessage($"[DEBUG]: PE Client Detected(platform={packet.PlatformId}, playerid={packet.PlayerId})");
+                Logger.Log("Client", LogLevel.DEBUG , $"收到PE数据包(平台: {packet.PlatformId},索引: {packet.PlayerId})");
             }
         }
     }

@@ -16,11 +16,11 @@ namespace Dimensions.Core
 
             if (text.Text.StartsWith("/server"))
             {
-                //var target = Program.config.GetServer(text.Text[7..].Trim());
+                var target = Program.Config.GetServer(text.Text[7..].Trim());
 
-                //Parent.ChangeServer(target);
+                Parent.ChangeServer(target);
 
-                // handled raw player command
+                //handled raw player command
                 args.Handled = true;
             }
             

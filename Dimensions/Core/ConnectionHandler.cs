@@ -14,8 +14,7 @@ public class ConnectionHandler : ClientHandler
         ReusedConnect2,
         Connected,
     }
-
-    private SyncPlayer syncPlayer;
+    
     private ShortPosition spawnPosition;
     
     // once client received world data from server, set it to true and request tile data
@@ -38,7 +37,7 @@ public class ConnectionHandler : ClientHandler
             if (state != ClientState.ReusedConnect2) return;
             var spawn = new SpawnPlayer
             {
-                PlayerSlot = syncPlayer.PlayerSlot,
+                PlayerSlot = Parent.syncPlayer.PlayerSlot,
                 Context = PlayerSpawnContext.SpawningIntoWorld,
                 DeathsPVE = 0,
                 DeathsPVP = 0,
@@ -49,20 +48,28 @@ public class ConnectionHandler : ClientHandler
             Parent.SendServer(spawn);
             state = ClientState.Connected;
         }
+        else if (args.Packet is LoadPlayer)
+        {
+            if (Parent.syncPlayer != null)
+            {
+                Parent.SendServer(Parent.syncPlayer);
+            }
+            
+        }
     }
 
     public override void OnC2SPacket(PacketReceiveArgs args)
     {
         if (args.Packet is SyncPlayer sync)
         {
-            if (syncPlayer != null && syncPlayer.Name != sync.Name)
+            if (Parent.syncPlayer != null && Parent.syncPlayer.Name != sync.Name)
             {
-                Parent.Disconnect("Name change is not allowed");
+                Parent.Disconnect("禁止修改名字");
                 args.Handled = true;
             }
             else
             {
-                syncPlayer = sync;
+                Parent.syncPlayer = sync;
                 Parent.Name = sync.Name;
             }
         }
