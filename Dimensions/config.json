@@ -1,11 +1,17 @@
 {
-  "listenPort": 7778,
+  "listenPort": 7777,
   "protocolVersion": "Terraria279",
+  "sendDimensionPacket": false,
   "servers": [
     {
-      "name": "cinstd",
-      "serverIP": "43.248.184.35",
-      "serverPort": 7777
+      "name": "a",
+      "serverIP": "127.0.0.1",
+      "serverPort": 8888
+    },
+    {
+      "name": "b",
+      "serverIP": "127.0.0.1",
+      "serverPort": 9999
     }
   ]
 }

@@ -21,8 +21,8 @@ namespace Dimensions.Core
         public override void OnS2CPacket(PacketReceiveArgs args)
         {
             if (args.Packet is not DimensionUpdate update) return;
-            Console.WriteLine($"dimension update received: {update}");
-
+            Logger.Log("DimensionPackets", LogLevel.INFO , $"收到维度数据包: {update}");
+            
             switch (update.SubType)
             {
                 case SubMessageID.OnlineInfoRequest:

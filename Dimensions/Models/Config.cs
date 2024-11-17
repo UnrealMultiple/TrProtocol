@@ -9,6 +9,7 @@ namespace Dimensions.Models;
 public class Config
 {
     public ushort listenPort;
+    public bool sendDimensionPacket;
     public string protocolVersion;
     public Server[] servers;
 

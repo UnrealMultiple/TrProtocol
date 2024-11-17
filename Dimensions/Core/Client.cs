@@ -107,7 +107,10 @@ public class Client
 
         // prepare the to-server channel to load player state
         _serverConnection.Send(clientHello);
-        _serverConnection.Send(clientAddress);
+        if (Program.Config.sendDimensionPacket)
+        {
+            _serverConnection.Send(clientAddress);
+        }
         s2c = new Tunnel(_serverConnection, _client, "[S2C]");
         s2c.OnReceive += OnS2CPacket;
         s2c.OnError += OnError;
