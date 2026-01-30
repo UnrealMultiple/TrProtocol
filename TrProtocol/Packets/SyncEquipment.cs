@@ -8,4 +8,5 @@ public class SyncEquipment : Packet, IPlayerSlot
     public short Stack { get; set; }
     public byte Prefix { get; set; }
     public short ItemType { get; set; }
+    public BitsByte Favorited { get; set; }
 }

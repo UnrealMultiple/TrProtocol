@@ -5,6 +5,8 @@ public class SyncPlayer : Packet, IPlayerSlot
     public override MessageID Type => MessageID.SyncPlayer;
     public byte PlayerSlot { get; set; }
     public byte SkinVariant { get; set; }
+    public byte VoiceVariant { get; set; }
+    public float VoicePitchOffset { get; set; }
     public byte Hair { get; set; }
     public string Name { get; set; }
     public byte HairDye { get; set; }

@@ -18,7 +18,10 @@ public class WorldData : Packet
     public Guid WorldUniqueID { get; set; }
     public ulong WorldGeneratorVersion { get; set; }
     public byte MoonType { get; set; }
-    public byte TreeBackground { get; set; }
+    public byte TreeBackground1 { get; set; }
+    public byte TreeBackground2 { get; set; }
+    public byte TreeBackground3 { get; set; }
+    public byte TreeBackground4 { get; set; }
     public byte CorruptionBackground { get; set; }
     public byte JungleBackground { get; set; }
     public byte SnowBackground { get; set; }
@@ -26,11 +29,8 @@ public class WorldData : Packet
     public byte CrimsonBackground { get; set; }
     public byte DesertBackground { get; set; }
     public byte OceanBackground { get; set; }
-    public byte UnknownBackground1 { get; set; }
-    public byte UnknownBackground2 { get; set; }
-    public byte UnknownBackground3 { get; set; }
-    public byte UnknownBackground4 { get; set; }
-    public byte UnknownBackground5 { get; set; }
+    public byte MushroomBackground { get; set; }
+    public byte UnderworldBackground { get; set; }
     public byte IceBackStyle { get; set; }
     public byte JungleBackStyle { get; set; }
     public byte HellBackStyle { get; set; }
@@ -86,4 +86,6 @@ public class WorldData : Packet
     public sbyte InvasionType { get; set; }
     public ulong LobbyID { get; set; }
     public float SandstormSeverity { get; set; }
+    
+    public ExtraSpawnPointData  ExtraSpawnPoints { get; set; }
 }

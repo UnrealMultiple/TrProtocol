@@ -6,4 +6,6 @@ public class PlayerBuffs : Packet, IPlayerSlot
     public byte PlayerSlot { get; set; }
     [ArraySize(44)]
     public ushort[] BuffTypes { get; set; }
+
+    public ushort EndMarker { get; set; }
 }

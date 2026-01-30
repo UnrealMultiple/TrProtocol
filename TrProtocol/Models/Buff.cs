@@ -11,5 +11,5 @@ namespace TrProtocol.Models;
 public partial struct Buff
 {
     public ushort BuffType { get; set; }
-    public short BuffTime { get; set; }
+    public ushort BuffTime { get; set; }
 }

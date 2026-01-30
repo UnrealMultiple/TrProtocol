@@ -2,5 +2,5 @@
 
 public class AnglerQuestFinished : Packet
 {
-    public override MessageID Type => MessageID.AnglerQuestFinished;
+    public override MessageID Type => MessageID.CompleteAnglerQuest;
 }

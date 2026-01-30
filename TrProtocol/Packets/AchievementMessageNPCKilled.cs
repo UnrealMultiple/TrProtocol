@@ -2,6 +2,6 @@
 
 public class AchievementMessageNPCKilled : Packet
 {
-    public override MessageID Type => MessageID.AchievementMessageNPCKilled;
+    public override MessageID Type => MessageID.NotifyPlayerNpcKilled;
     public short NPCType { get; set; }
 }

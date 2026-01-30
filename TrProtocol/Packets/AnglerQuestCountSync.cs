@@ -2,7 +2,7 @@
 
 public class AnglerQuestCountSync : Packet, IPlayerSlot
 {
-    public override MessageID Type => MessageID.AnglerQuestCountSync;
+    public override MessageID Type => MessageID.NumberOfAnglerQuestsCompleted;
     public byte PlayerSlot { get; set; }
     public int AnglerQuestsFinished { get; set; }
     public int GolferScoreAccumulated { get; set; }

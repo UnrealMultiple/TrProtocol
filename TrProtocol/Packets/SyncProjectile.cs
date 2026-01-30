@@ -4,6 +4,7 @@ public class SyncProjectile : Packet, IProjSlot, IPlayerSlot
 {
     public override MessageID Type => MessageID.SyncProjectile;
     public short ProjSlot { get; set; }
+    public short Identity { get; set; }
     public Vector2 Position { get; set; }
     public Vector2 Velocity { get; set; }
     public byte PlayerSlot { get; set; }

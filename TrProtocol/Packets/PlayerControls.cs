@@ -1,4 +1,6 @@
-﻿namespace TrProtocol.Packets;
+﻿using System.Drawing;
+
+namespace TrProtocol.Packets;
 
 public class PlayerControls : Packet, IPlayerSlot
 {
@@ -12,8 +14,12 @@ public class PlayerControls : Packet, IPlayerSlot
     public Vector2 Position { get; set; }
     [Condition(nameof(Bit2), 2)]
     public Vector2 Velocity { get; set; }
+    [Condition(nameof(Bit2), 7)]
+    public ushort MountType { get; set; }
     [Condition(nameof(Bit3), 6)]
     public Vector2 PotionOfReturnOriginalUsePosition { get; set; }
     [Condition(nameof(Bit3), 6)]
     public Vector2 PotionOfReturnHomePosition { get; set; }
+    [Condition(nameof(Bit4), 5)]
+    public Vector2 NetCameraTarget { get; set; }
 }

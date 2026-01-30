@@ -6,4 +6,6 @@ public class PlayerZone : Packet, IPlayerSlot
     public byte PlayerSlot { get; set; }
     [ArraySize(5)]
     public byte[] Zone { get; set; }
+
+    public byte TownNPCs { get; set; }
 }
