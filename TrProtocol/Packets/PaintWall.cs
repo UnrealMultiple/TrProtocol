@@ -5,5 +5,5 @@ public class PaintWall : Packet
     public override MessageID Type => MessageID.PaintWall;
     public ShortPosition Position { get; set; }
     public byte Color { get; set; }
-    public byte Unknown { get; set; }
+    public byte CoatType { get; set; }
 }
