@@ -117,6 +117,7 @@ public enum MessageID : byte
     TileGetSection = 8,
     Status = 9,
     TileSendSection = 10,
+    TileFrameSection = 11,
     PlayerSpawn = 12,
     PlayerUpdate = 13,
     PlayerActive = 14,
@@ -149,6 +150,7 @@ public enum MessageID : byte
     PlayerTeam = 45,
     SignRead = 46,
     SignNew = 47,
+    LiquidSet = 48,
     PlayerSpawnSelf = 49,
     PlayerBuff = 50,
     NpcSpecial = 51,
@@ -261,8 +263,6 @@ public enum MessageID : byte
     SyncItemCannotBeTakenByEnemies = 148,
     DeadCellsDisplayJarTryPlacing = 149,
 
-    ServerInfo = 180,
-    PlayerPlatformInfo = 170,
     SpectatePlayer = 150,
     SyncItemDespawn = 151,
     ItemUseSound = 152,
@@ -275,4 +275,9 @@ public enum MessageID : byte
     RequestSection = 159,
     ItemPosition = 160,
     HostToken = 161,
+
+    // Mobile-specific packets
+    ServerInfo = 162,
+    PlayerPlatformInfo = 163,
+    Count = 164,
 }
