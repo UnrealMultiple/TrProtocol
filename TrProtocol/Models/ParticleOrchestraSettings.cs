@@ -31,6 +31,6 @@ public partial class ParticleOrchestraSettings
 
     public byte IndexOfPlayerWhoInvokedThis;
 
-    public const int SerializationSize = 21;
+    public const int SerializationSize = 22;
 }
 

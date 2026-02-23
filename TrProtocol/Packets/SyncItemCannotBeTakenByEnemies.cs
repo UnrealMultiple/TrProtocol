@@ -10,6 +10,5 @@ public class SyncItemCannotBeTakenByEnemies : Packet, IItemBase
     public byte Prefix { get; set; }
     public byte Owner { get; set; }
     public short ItemType { get; set; }
-    public bool Shimmered { get; set; }
     public byte TimeLeftInWhichTheItemCannotBeTakenByEnemies { get; set; }
 }

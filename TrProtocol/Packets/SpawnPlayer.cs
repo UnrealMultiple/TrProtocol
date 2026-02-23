@@ -8,5 +8,6 @@ public class SpawnPlayer : Packet, IPlayerSlot
     public int Timer { get; set; }
     public short DeathsPVE { get; set; }
     public short DeathsPVP { get; set; }
+    public byte Team { get; set; }
     public PlayerSpawnContext Context { get; set; }
 }

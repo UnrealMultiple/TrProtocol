@@ -1,4 +1,6 @@
-﻿namespace TrProtocol;
+﻿using System.Runtime.InteropServices;
+
+namespace TrProtocol;
 
 public enum MessageID : byte
 {
@@ -13,10 +15,12 @@ public enum MessageID : byte
 	RequestTileData = 8,
 	StatusText = 9,
 	TileSection = 10,
-	FrameSection = 11,
+    [Obsolete("Deprecated. Framing happens as needed after TileSection is sent.")]
+    FrameSection = 11,
 	SpawnPlayer = 12,
 	PlayerControls = 13,
-	Unused15 = 15,
+    [Obsolete("Deprecated.")]
+    Unused15 = 15,
 	PlayerHealth = 16,
 	TileChange = 17,
 	MenuSunMoon = 18,
@@ -49,7 +53,8 @@ public enum MessageID : byte
 	KillPlayer = 44,
 	RequestReadSign = 46,
 	ReadSign = 47,
-	LiquidUpdate = 48,
+    [Obsolete("Deprecated. Use NetLiquidModule instead.")]
+    LiquidUpdate = 48,
 	StartPlaying = 49,
 	PlayerBuffs = 50,
 	Assorted1 = 51,
@@ -74,14 +79,17 @@ public enum MessageID : byte
 	InvasionProgressReport = 78,
 	CombatTextInt = 81,
 	NetModules = 82,
-	NPCKillCountDeathTally = 83,
+    [Obsolete("Deprecated.")]
+    NPCKillCountDeathTally = 83,
 	QuickStackChests = 85,
 	TileEntitySharing = 86,
 	TileEntityPlacement = 87,
 	ItemTweaker = 88,
 	ItemFrameTryPlacing = 89,
+    [Obsolete("Deprecated.")]
 	InstancedItem = 90,
 	SyncEmoteBubble = 91,
+    [Obsolete("Deprecated.")]
 	Unused94 = 94,
 	MurderSomeoneElsesProjectile = 95,
 	TeleportPlayerThroughPortal = 96,
@@ -177,7 +185,6 @@ public enum MessageID : byte
     SyncPlayerChestIndex = 80,
     CreateCombatText = 81,
     LoadNetModule = 82,
-    NpcKillCount = 83,
     PlayerStealth = 84,
     ForceItemIntoNearestChest = 85,
     UpdateTileEntity = 86,
@@ -201,18 +208,23 @@ public enum MessageID : byte
     NpcShopItem = 104,
     GemLockToggle = 105,
     PoofOfSmoke = 106,
+    [Obsolete("Deprecated. Use NetTextModule instead.")]
     SmartTextMessage = 107,
     WiredCannonShot = 108,
     MassWireOperation = 109,
     MassWireOperationPay = 110,
+    [Obsolete("Deprecated.")]
     ToggleParty = 111,
     TreeGrowFX = 112,
     CrystalInvasionStart = 113,
+    [Obsolete]
     CrystalInvasionWipeAll = 114,
+    [Obsolete]
     MinionAttackTargetUpdate = 115,
     CrystalInvasionSendWaitTime = 116,
     PlayerHurtV2 = 117,
     PlayerDeathV2 = 118,
+    [Obsolete]
     CreateCombatTextExtended = 119,
     Emoji = 120,
     TileEntityDisplayDollItemSync = 121,
@@ -223,6 +235,7 @@ public enum MessageID : byte
     SyncRevengeMarker = 126,
     RemoveRevengeMarker = 127,
     LandGolfBallInCup = 128,
+    [Obsolete]
     FinishedConnectingToServer = 129,
     FishOutNPC = 130,
     TamperWithNPC = 131,
@@ -232,18 +245,39 @@ public enum MessageID : byte
     DeadPlayer = 135,
     SyncCavernMonsterType = 136,
     RequestNPCBuffRemoval = 137,
+    [Obsolete]
     ClientSyncedInventory = 138,
     SetCountsAsHostForGameplay = 139,
     SetMiscEventValues = 140,
     RequestLucyPopup = 141,
     SyncProjectileTrackers = 142,
+    [Obsolete]
     CrystalInvasionRequestedToSkipWaitTime = 143,
+    [Obsolete]
     RequestQuestEffect = 144,
+    [Obsolete]
     SyncItemsWithShimmer = 145,
     ShimmerActions = 146,
     SyncLoadout = 147,
+    [Obsolete]
     SyncItemCannotBeTakenByEnemies = 148,
+    DeadCellsDisplayJarTryPlacing = 149,
 
-    ServerInfo = 149,
-    PlayerPlatformInfo = 150
+    SpectatePlayer = 150,
+    SyncItemDespawn = 151,
+    ItemUseSound = 152,
+    NPCDebuffDamage = 153,
+    Ping = 154,
+    SyncChestSize = 155,
+    TELeashedEntityAnchorPlaceItem = 156,
+    TeamChangeFromUI = 157,
+    ExtraSpawnSectionLoaded = 158,
+    RequestSection = 159,
+    ItemPosition = 160,
+    HostToken = 161,
+
+    // Mobile-specific packets
+    ServerInfo = 162,
+    PlayerPlatformInfo = 163,
+    Count = 164,
 }

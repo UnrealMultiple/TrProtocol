@@ -6,6 +6,7 @@ public class TEDisplayDollItemSync : Packet, IPlayerSlot
     public byte PlayerSlot { get; set; }
     public int TileEntityID { get; set; }
     public byte ItemSlot { get; set; }
+    public byte Unknown { get; set; }
     public ushort ItemID { get; set; }
     public ushort Stack { get; set; }
     public byte Prefix { get; set; }

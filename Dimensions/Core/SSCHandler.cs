@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TrProtocol;
+﻿using TrProtocol;
 using TrProtocol.Packets;
 
 namespace Dimensions.Core
@@ -17,14 +12,13 @@ namespace Dimensions.Core
             NonSSC
         }
         private State current = State.FreshConnection;
-        private const int maxInventory = 350;
         private SyncPlayer syncPlayer;
         private PlayerMana playerMana;
         private PlayerHealth playerHealth;
         private AnglerQuestCountSync anglerQuest;
         private byte currentSlot;
         private bool newServer;
-        private readonly SyncEquipment[] equipments = new SyncEquipment[maxInventory];
+        private readonly Dictionary<int, SyncEquipment> equipments = new Dictionary<int, SyncEquipment>();
         public override void OnC2SPacket(PacketReceiveArgs args)
         {
             if (current == State.SSC) return;
@@ -51,7 +45,7 @@ namespace Dimensions.Core
 
         private IEnumerable<IPlayerSlot> GetRestores()
         {
-            foreach (var equip in equipments)
+            foreach (var equip in equipments.Values)
                 yield return equip;
             yield return syncPlayer;
             yield return playerMana;

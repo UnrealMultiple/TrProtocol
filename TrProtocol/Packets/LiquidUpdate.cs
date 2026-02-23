@@ -6,5 +6,5 @@ public class LiquidUpdate : Packet
     public short TileX { get; set; }
     public short TileY { get; set; }
     public byte Liquid { get; set; }
-    public byte LiquidType { get; set; }
+    public LiquidType LiquidType { get; set; }
 }

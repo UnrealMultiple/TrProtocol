@@ -2,7 +2,7 @@
 
 public class Assorted1 : Packet, IPlayerSlot
 {
-    public override MessageID Type => MessageID.Assorted1;
+    public override MessageID Type => MessageID.NpcSpecial;
     public byte PlayerSlot { get; set; }
     public byte Unknown { get; set; }
 }

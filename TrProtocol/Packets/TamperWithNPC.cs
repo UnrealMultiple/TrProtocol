@@ -1,6 +1,6 @@
 ﻿namespace TrProtocol.Packets;
 
-public class TamperWithNPC : Packet, INPCSlot, IOtherPlayerSlot
+public class TamperWithNPC : Packet, INPCSlot
 {
     public override MessageID Type => MessageID.TamperWithNPC;
     public short NPCSlot { get; set; }
@@ -10,6 +10,5 @@ public class TamperWithNPC : Packet, INPCSlot, IOtherPlayerSlot
     [Condition(nameof(_isUniqueImmune))]
     public int Time { get; set; }
     [Condition(nameof(_isUniqueImmune))]
-    public byte OtherPlayerSlot { get; set; }
-    public byte HighBitOfPlayerIsAlwaysZero { get; set; } = 0;
+    public short FromWho { get; set; }
 }

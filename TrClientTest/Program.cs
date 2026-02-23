@@ -13,8 +13,8 @@ namespace TrClientTest
         static void Main(string[] args)
         {
             var client = new TClient();
-            var ip = "43.248.184.35";
-            ushort port = 1001;
+            var ip = "127.0.0.1";
+            ushort port = 7777;
             /*
             ip = "43.248.184.35";
             port = 7777;*/
@@ -35,7 +35,7 @@ namespace TrClientTest
             bool shouldSpam = false;
 
             client.On<LoadPlayer>(_ =>
-                    client.Send(new ClientUUID { UUID = Guid.Empty.ToString() }));
+                    client.Send(new ClientUUID { UUID = Guid.NewGuid().ToString() }));
             client.On<WorldData>(_ =>
             {
                 if (!shouldSpam)

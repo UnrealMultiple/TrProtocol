@@ -7,4 +7,5 @@ public class SpecialFX : Packet
     public Position Position { get; set; }
     public byte Height { get; set; }
     public short Gore { get; set; }
+    public byte Style { get; set; }
 }

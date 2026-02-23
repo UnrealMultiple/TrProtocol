@@ -6,4 +6,5 @@ public class SendNPCBuffs : Packet, INPCSlot
     public short NPCSlot { get; set; }
     [ArraySize(20)]
     public Buff[] Buffs { get; set; }
+    public short EndMarker { get; set; }
 }

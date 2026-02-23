@@ -9,4 +9,6 @@ public class TEHatRackItemSync : Packet, IPlayerSlot
     public ushort ItemID { get; set; }
     public ushort Stack { get; set; }
     public byte Prefix { get; set; }
+    public int Unknown { get; set; } = 0;
+    public byte EndMarker { get; set; } = 0;
 }

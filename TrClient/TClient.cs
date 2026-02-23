@@ -18,7 +18,7 @@ namespace TrClient
         private TcpClient client;
 
         public byte PlayerSlot { get; private set; }
-        public string CurRelease = "Terraria279";
+        public string CurRelease = "Terraria315";
         public string Username = "";
         public bool IsPlaying { get; private set; }
 
@@ -156,6 +156,7 @@ namespace TrClient
             On<LoadPlayer>(player =>
             {
                 PlayerSlot = player.PlayerSlot;
+                Send(new ClientUUID() { UUID = Guid.NewGuid().ToString() });
                 SendPlayer();
                 Send(new RequestWorldInfo());
             });

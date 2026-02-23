@@ -88,6 +88,8 @@ public partial class PacketSerializer
 
         public IConfigurable Configure(PropertyInfo prop, string version)
         {
+            Console.WriteLine(prop.DeclaringType);
+            Console.WriteLine(prop.Name);
             if (elementSerializer is IConfigurable conf)
                 conf.Configure(prop, version);
             return new ArraySerializer<T>()

@@ -120,7 +120,7 @@ public partial class PacketSerializer
     public string Version { get; }
 
 
-    public PacketSerializer(bool client, string version = "Terraria248")
+    public PacketSerializer(bool client, string version = "Terraria318")
     {
         Client = client;
         Version = version;
@@ -136,7 +136,7 @@ public partial class PacketSerializer
         using var br = new BinaryReader(ms);
         Packet result = null;
         var msgid = (MessageID)br.ReadByte();
-        if (msgid == MessageID.NetModules)
+        if (msgid == MessageID.LoadNetModule)
         {
             var moduletype = (NetModuleType)br.ReadInt16();
             if (moduledeserializers.TryGetValue(moduletype, out var f))
