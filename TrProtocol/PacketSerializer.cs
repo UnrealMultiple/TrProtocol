@@ -120,7 +120,7 @@ public partial class PacketSerializer
     public string Version { get; }
 
 
-    public PacketSerializer(bool client, string version = "Terraria248")
+    public PacketSerializer(bool client, string version = "Terraria318")
     {
         Client = client;
         Version = version;

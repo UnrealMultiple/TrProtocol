@@ -74,6 +74,7 @@ public class WorldData : Packet
     public BitsByte EventInfo8 { get; set; }
     public BitsByte EventInfo9 { get; set; }
     public BitsByte EventInfo10 { get; set; }
+    public BitsByte EventInfo11 { get; set; }
     public byte SundialCooldown { get; set; }
     public byte MoondialCooldown { get; set; }
     public short CopperOreTier { get; set; }
@@ -86,6 +87,5 @@ public class WorldData : Packet
     public sbyte InvasionType { get; set; }
     public ulong LobbyID { get; set; }
     public float SandstormSeverity { get; set; }
-    
     public ExtraSpawnPointData  ExtraSpawnPoints { get; set; }
 }
